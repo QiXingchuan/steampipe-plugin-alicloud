@@ -679,8 +679,7 @@ func getEcsInstanceARN(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 	instance := h.Item.(ecs.Instance)
 
 	// Get project details
-	getCommonColumnsCached := plugin.HydrateFunc(getCommonColumns).WithCache()
-	commonData, err := getCommonColumnsCached(ctx, d, h)
+	commonData, err := getCommonColumns(ctx, d, h)
 	if err != nil {
 		return nil, err
 	}

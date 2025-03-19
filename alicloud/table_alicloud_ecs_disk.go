@@ -461,8 +461,7 @@ func getEcsDiskARN(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDa
 	disk := h.Item.(ecs.Disk)
 
 	// Get project details
-	getCommonColumnsCached := plugin.HydrateFunc(getCommonColumns).WithCache()
-	commonData, err := getCommonColumnsCached(ctx, d, h)
+	commonData, err := getCommonColumns(ctx, d, h)
 	if err != nil {
 		return nil, err
 	}
